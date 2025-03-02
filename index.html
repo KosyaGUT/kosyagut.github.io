@@ -159,6 +159,64 @@
                 font-size: 0.9em;
             }
         }
+
+        /* Добавленные стили для языков */
+        .project[data-language="go"] {
+            position: relative;
+            border-color: #00ADD8;
+        }
+
+        .project[data-language="go"]::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background-image: url('https://go.dev/images/go-logo-blue.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .project[data-language="python"] {
+            position: relative;
+            border-color: #3776AB;
+        }
+
+        .project[data-language="python"]::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background-image: url('pythoned.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .project[data-language="go"]:hover {
+            background: #00ADD8;
+            color: white;
+        }
+
+        .project[data-language="python"]:hover {
+            background: linear-gradient(135deg, #3776AB 30%, #FFD43B 100%);
+            color: white;
+        }
+        .project {
+            position: relative; /* Важно для позиционирования псевдоэлемента */
+            overflow: hidden; /* Обрезает выходящие за границы элементы */
+        }
+
+        .project[data-language]::before {
+            transition: opacity 0.3s ease; /* Анимация исчезновения */
+            opacity: 0.8; /* Начальная прозрачность */
+        }
+
+        .project[data-language]:hover::before {
+            opacity: 0; /* Полная прозрачность при наведении */
+        }
     </style>
 </head>
 <body>
@@ -176,19 +234,31 @@
         </header>
 
         <section class="projects">
-            <a href="https://github.com/KosyaGUT/shortURL.git" class="project" target="_blank">
-                <h3>ShortURL - Сервис для сокращения ссылок</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/weather_server.git" class="project" target="_blank">
-                <h3>Weather API Project</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/CalculatorGo" class="project" target="_blank">
-                <h3>Calculator in Go</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/bot-cloudwords" class="project" target="_blank">
-                <h3>Telegram WordCloud Bot для абитуриентов</h3>
-            </a>
-        </section>
+        <a href="https://github.com/KosyaGUT/shortURL.git" 
+           class="project" 
+           target="_blank"
+           data-language="go">
+            <h3>ShortURL - Сервис для сокращения ссылок</h3>
+        </a>
+        <a href="https://github.com/KosyaGUT/weather_server.git" 
+           class="project" 
+           target="_blank"
+           data-language="python">
+            <h3>Weather API Project</h3>
+        </a>
+        <a href="https://github.com/KosyaGUT/CalculatorGo" 
+           class="project" 
+           target="_blank"
+           data-language="go">
+            <h3>Calculator in Go</h3>
+        </a>
+        <a href="https://github.com/KosyaGUT/bot-cloudwords" 
+           class="project" 
+           target="_blank"
+           data-language="python">
+            <h3>Telegram WordCloud Bot для абитуриентов</h3>
+        </a>
+    </section>
     </div>
 
     <footer>
