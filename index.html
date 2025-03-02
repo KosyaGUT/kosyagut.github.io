@@ -6,6 +6,7 @@
     <title>Резюме Python/Golang разработчик</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Общие стили */
         * {
             margin: 0;
             padding: 0;
@@ -15,10 +16,11 @@
 
         body {
             min-height: 100vh;
-            position: relative;
-            color: #333; /* Изменен цвет текста на темный */
-            background: #ffffff; /* Белый фон */
+            color: #333;
+            background: #ffffff;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         #canvas {
@@ -32,9 +34,10 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
-            position: relative;
+            flex: 1;
         }
 
+        /* Шапка */
         .header {
             text-align: center;
             margin-bottom: 60px;
@@ -46,10 +49,11 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
-            border: 3px solid #4a90e2; /* Синяя рамка */
+            border: 3px solid #4a90e2;
             box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
         }
 
+        /* Информация */
         .about {
             background: rgba(255, 255, 255, 0.9);
             padding: 30px;
@@ -58,6 +62,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        /* Проекты */
         .projects {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -86,11 +91,13 @@
             box-shadow: 0 6px 12px rgba(74, 144, 226, 0.2);
         }
 
+        /* Футер */
         footer {
             background: rgba(255, 255, 255, 0.9);
             padding: 30px 0;
             text-align: center;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            margin-top: auto;
         }
 
         .contacts {
@@ -108,8 +115,19 @@
             padding: 10px 20px;
             border-radius: 25px;
             background: rgba(74, 144, 226, 0.1);
+            transition: background 0.3s ease;
         }
 
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-item:hover {
+            background: rgba(74, 144, 226, 0.2);
+        }
+
+        /* Заголовки */
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
@@ -121,6 +139,7 @@
             color: #4a90e2;
         }
 
+        /* Адаптивность */
         @media (max-width: 768px) {
             .container {
                 padding: 20px 10px;
@@ -130,6 +149,15 @@
                 width: 150px;
                 height: 150px;
             }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .contact-item {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -137,59 +165,55 @@
     <canvas id="canvas"></canvas>
 
     <div class="container">
-
-        <div class="background"></div>
-
-        <div class="container">
-            <header class="header">
-                <img src="photo_2025-02-28_18-23-39.jpg" alt="Мое фото" class="photo">
-                <h1>Новоженин Николай Васильевич</h1>
-                <div class="about">
-                    <h2>Python/Golang разработчик</h2>
-                    <p>Опыт работы: 6 месяцев</p>
-                    <p>Стек технологий: Python, Golang, Django, PostgreSQL, Docker</p>
-                </div>
-            </header>
-
-            <section class="projects">
-                <a href="https://github.com/KosyaGUT/shortURL.git" class="project" target="_blank">
-                    <h3>ShortURL - Сервис для сокращения ссылок</h3>
-                </a>
-                <a href="https://github.com/KosyaGUT/weather_server.git" class="project" target="_blank">
-                    <h3>Weather API Project</h3>
-                </a>
-                <a href="https://github.com/KosyaGUT/CalculatorGo" class="project" target="_blank">
-                    <h3>Calculator in Go</h3>
-                </a>
-                <a href="https://github.com/KosyaGUT/bot-cloudwords" class="project" target="_blank">
-                    <h3>Telegram WordCloud Bot для абитуриентов</h3>
-                </a>
-            </section>
-        </div>
-
-        <footer>
-            <div class="contacts">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:+79058436186"><span>+7 (905) 843-61-86</span></a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:kosyanovozhenin@gmail.com"><span>kosyanovozhenin@gmail.com</span></a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-telegram-plane"></i>
-                    <a href="https://t.me/gutis_game"><span>@gutis_game</span></a>
-                </div>
+        <header class="header">
+            <img src="photo_2025-02-28_18-23-39.jpg" alt="Мое фото" class="photo">
+            <h1>Новоженин Николай Васильевич</h1>
+            <div class="about">
+                <h2>Python/Golang разработчик</h2>
+                <p>Опыт работы: 6 месяцев</p>
+                <p>Стек технологий: Python, Golang, Django, PostgreSQL, Docker</p>
             </div>
-        </footer>
+        </header>
+
+        <section class="projects">
+            <a href="https://github.com/KosyaGUT/shortURL.git" class="project" target="_blank">
+                <h3>ShortURL - Сервис для сокращения ссылок</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/weather_server.git" class="project" target="_blank">
+                <h3>Weather API Project</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/CalculatorGo" class="project" target="_blank">
+                <h3>Calculator in Go</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/bot-cloudwords" class="project" target="_blank">
+                <h3>Telegram WordCloud Bot для абитуриентов</h3>
+            </a>
+        </section>
     </div>
+
+    <footer>
+        <div class="contacts">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+79058436186">+7 (905) 843-61-86</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:kosyanovozhenin@gmail.com">kosyanovozhenin@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-telegram-plane"></i>
+                <a href="https://t.me/gutis_game" target="_blank">@gutis_game</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Анимация искорок
+        // Оптимизированная анимация частиц
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 50;
+        const maxParticles = 100;
 
         // Настройка canvas
         function resizeCanvas() {
@@ -207,13 +231,13 @@
                 this.size = Math.random() * 2 + 1;
                 this.speedX = Math.random() * 3 - 1.5;
                 this.speedY = Math.random() * 3 - 1.5;
-                this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+                this.color = `hsla(210, 70%, 50%, ${Math.random() * 0.4})`;
             }
 
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-                if (this.size > 0.2) this.size -= 0.1;
+                this.size *= 0.97;
             }
 
             draw() {
@@ -226,29 +250,28 @@
 
         // Обработчик движения мыши
         document.addEventListener('mousemove', (e) => {
-            for (let i = 0; i < 3; i++) {
-                particles.push(new Particle(e.clientX, e.clientY));
+            if (particles.length < maxParticles) {
+                for (let i = 0; i < 2; i++) {
+                    particles.push(new Particle(e.clientX, e.clientY));
+                }
             }
         });
 
         // Анимация
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach((particle, index) => {
+            
+            particles = particles.filter(particle => {
                 particle.update();
                 particle.draw();
-
-                if (particle.size <= 0.2) {
-                    particles.splice(index, 1);
-                }
+                return particle.size > 0.3;
             });
 
             requestAnimationFrame(animate);
         }
         animate();
 
-        // Плавный ховер для проектов
+        // Оптимизированные ховер-эффекты
         document.querySelectorAll('.project').forEach(project => {
             project.addEventListener('mouseover', function() {
                 this.style.transform = 'translateY(-5px)';
