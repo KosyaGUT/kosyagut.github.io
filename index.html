@@ -195,8 +195,40 @@
             background-repeat: no-repeat;
         }
 
+        .project[data-language="diplom"] {
+            position: relative;
+            border-color: #ff9100;
+        }
+
+        .project[data-language="diplom"]::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background-image: url('gutis_new.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .diplom {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .diplom {
+                grid-column: span 1;
+            }
+        }
+
         .project[data-language="go"]:hover {
             background: #00ADD8;
+            color: white;
+        }
+
+        .project[data-language="diplom"]:hover {
+            background: #ff9100;
             color: white;
         }
 
@@ -234,6 +266,12 @@
         </header>
 
         <section class="projects">
+        <a href="https://github.com/KosyaGUT/diplom.git" 
+           class="project diplom" 
+           target="_blank"
+           data-language="diplom">
+            <h3>ДИПЛОМ</h3>
+        </a>
         <a href="https://github.com/KosyaGUT/shortURL.git" 
            class="project" 
            target="_blank"
