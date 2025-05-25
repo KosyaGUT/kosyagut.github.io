@@ -138,7 +138,25 @@
             margin-bottom: 20px;
             color: #4a90e2;
         }
+        /* Добавляем стили для десктопной версии */
+        @media (min-width: 769px) {
+            .projects {
+                grid-template-columns: 1fr 1fr;
+                grid-auto-flow: dense;
+            }
 
+            .project[data-language="diplom"] {
+                grid-column: 1 / -1;
+            }
+
+            .project[data-language="go"] {
+                grid-column: 1;
+            }
+
+            .project[data-language="python"] {
+                grid-column: 2;
+            }
+        }
         /* Адаптивность */
         @media (max-width: 768px) {
             .container {
@@ -266,49 +284,49 @@
         </header>
 
         <section class="projects">
-        <a href="https://github.com/KosyaGUT/diplom.git" 
-           class="project diplom" 
-           target="_blank"
-           data-language="diplom">
-            <h3>ДИПЛОМ</h3>
-        </a>
-        <a href="https://github.com/KosyaGUT/shortURL.git" 
-           class="project" 
-           target="_blank"
-           data-language="go">
-            <h3>ShortURL - Сервис для сокращения ссылок</h3>
-        </a>
-        <a href="https://github.com/KosyaGUT/weather_server.git" 
-           class="project" 
-           target="_blank"
-           data-language="python">
-            <h3>Weather API Project</h3>
-        </a>
-        <a href="https://github.com/KosyaGUT/Prototype-of-a-biathlon-competition-management-system" 
+            <a href="https://github.com/KosyaGUT/diplom.git" 
+            class="project diplom" 
+            target="_blank"
+            data-language="diplom">
+                <h3>ДИПЛОМ</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/shortURL.git" 
             class="project" 
             target="_blank"
             data-language="go">
-            <h3>Прототип системы для управления биатлонными соревнованиями</h3>
-        </a>
-        <a href="https://github.com/KosyaGUT/llm-analyze-know-vulnerabilities-open-source" 
-           class="project" 
-           target="_blank"
-           data-language="python">
-            <h3>Анализ уязвимостей в open-source проектах с использованием LLM</h3>
-        </a>
-        <a href="https://github.com/KosyaGUT/CalculatorGo" 
-           class="project" 
-           target="_blank"
-           data-language="go">
-            <h3>Calculator in Go</h3>
-        </a>
-        <a href="https://github.com/KosyaGUT/bot-cloudwords" 
-           class="project" 
-           target="_blank"
-           data-language="python">
-            <h3>Telegram WordCloud Bot для абитуриентов</h3>
-        </a>
-    </section>
+                <h3>ShortURL - Сервис для сокращения ссылок</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/weather_server.git" 
+            class="project" 
+            target="_blank"
+            data-language="python">
+                <h3>Weather API Project</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/Prototype-of-a-biathlon-competition-management-system" 
+            class="project" 
+            target="_blank"
+            data-language="go">
+                <h3>Прототип системы для управления биатлонными соревнованиями</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/llm-analyze-know-vulnerabilities-open-source" 
+            class="project" 
+            target="_blank"
+            data-language="python">
+                <h3>Анализ уязвимостей в open-source проектах с использованием LLM</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/CalculatorGo" 
+            class="project" 
+            target="_blank"
+            data-language="go">
+                <h3>Calculator in Go</h3>
+            </a>
+            <a href="https://github.com/KosyaGUT/bot-cloudwords" 
+            class="project" 
+            target="_blank"
+            data-language="python">
+                <h3>Telegram WordCloud Bot для абитуриентов</h3>
+            </a>
+        </section>
     </div>
 
     <footer>
@@ -323,7 +341,7 @@
             </div>
             <div class="contact-item">
                 <i class="fab fa-telegram-plane"></i>
-                <a href="https://t.me/gutis_game" target="_blank">@gutis_game</a>
+                <a href="https://t.me/gutis_GG" target="_blank">@gutis_game</a>
             </div>
         </div>
     </footer>
