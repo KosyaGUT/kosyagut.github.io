@@ -1,424 +1,490 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме Python/Golang разработчик</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Общие стили */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Резюме – Новоженин Николай</title>
+  <meta name="description" content="Junior Golang Backend Developer – Новоженин Николай. Проекты, навыки, опыт. Docker, Kubernetes, PostgreSQL, RabbitMQ, gRPC.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --brand: #4a90e2;
+      --brand-dark: #357abd;
+      --shadow: 0 2px 10px rgba(0,0,0,0.08);
+      --beginner: #ff4757;
+      --intermediate: #ffa502;
+      --advanced: #2ed573;
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --brand: #60a5fa;
+      --brand-dark: #3b82f6;
+      --shadow: 0 2px 14px rgba(0,0,0,0.35);
+      --beginner: #ff6b81;
+      --intermediate: #ffb142;
+      --advanced: #3be27b;
+    }
 
-        body {
-            min-height: 100vh;
-            color: #333;
-            background: #ffffff;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif;}
+    body {background: var(--bg); color: var(--text); overflow-x: hidden;}
 
-        #canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+    header {
+      position: sticky; 
+      top: 0; 
+      background: var(--card); 
+      padding: 14px 22px; 
+      display: flex; 
+      justify-content: center;
+      align-items: center; 
+      box-shadow: var(--shadow); 
+      z-index: 20;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand {
+      display:flex; 
+      align-items:center; 
+      gap:10px; 
+      font-weight: 800; 
+      letter-spacing: .3px;
+      margin-right: auto;
+    }
+    .brand .dot {width:10px; height:10px; border-radius:50%; background: var(--brand);} 
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            flex: 1;
-        }
+    nav {display:flex; gap: 8px; flex-wrap: wrap; justify-content: center;}
+    nav a {padding:8px 12px; border-radius:10px; text-decoration: none; color: var(--brand); font-weight: 600; cursor: pointer; transition: .2s ease;}
+    nav a:hover {background: rgba(74,144,226,.12);} 
+    nav a.active {background: var(--brand); color: #fff;}
 
-        /* Шапка */
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+    .theme-toggle {border: none; background: rgba(74,144,226,.12); color: var(--brand); padding:8px 12px; border-radius: 10px; cursor: pointer; font-weight:700;}
+    .theme-toggle:hover {background: rgba(74,144,226,.2);} 
 
-        .photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid #4a90e2;
-            box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
-        }
+    main {max-width: 1100px; margin: 0 auto;}
+    section {min-height: 100vh; display: none; padding: 60px 20px; transition: opacity .45s ease, transform .45s ease;}
+    section.active {display: block;}
 
-        /* Информация */
-        .about {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .hero {text-align: center; display:grid; place-items:center; gap:16px;}
+    .hero img {width: 180px; height: 180px; border-radius: 50%; border: 3px solid var(--brand); box-shadow: var(--shadow); object-fit: cover;}
+    .subtitle {color: var(--muted);} 
 
-        /* Проекты */
-        .projects {
-            display: grid;
-            /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
-            gap: 20px;
-            margin-bottom: 60px;
-        }
+    .card {background: var(--card); border-radius: 14px; padding: 20px; box-shadow: var(--shadow);} 
 
-        .project {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #333;
-            transition: all 0.3s ease;
-            border: 1px solid #e0e0e0;
-            min-height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    .skills {display: flex; flex-wrap: wrap; gap: 10px;}
+    .skill {background: rgba(74,144,226,.12); color: var(--brand); border: 1px solid rgba(74,144,226,.25); border-radius: 999px; padding: 8px 14px; font-weight: 700;}
 
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(74, 144, 226, 0.2);
-        }
+    .skill-modal-backdrop{position:fixed; inset:0; display:none; place-items:center; background: rgba(0,0,0,.45); z-index:50;}
+    .skill-modal{width:min(780px,90vw); max-height:80vh; overflow:auto;}
+    .skills-grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:14px;}
+    .bar{height:10px; background: rgba(74,144,226,.18); border-radius:999px; overflow:hidden;}
+    .bar>span{display:block; height:100%; background: var(--brand);} 
 
-        /* Футер */
-        footer {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px 0;
-            text-align: center;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-            margin-top: auto;
-        }
+    .projects {display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;}
+    .project {background: var(--card); padding: 18px; border-radius: 12px; box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease;}
+    .project:hover {transform: translateY(-5px);} 
+    .project h3 {margin-bottom: 8px; color: var(--brand);} 
+    .project a {text-decoration: none; color: inherit;}
+    .project .meta{color: var(--muted); font-size: 14px; margin-top:8px;}
 
-        .contacts {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
+    .about p {margin-bottom: 14px; line-height: 1.6;}
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #333;
-            padding: 10px 20px;
-            border-radius: 25px;
-            background: rgba(74, 144, 226, 0.1);
-            transition: background 0.3s ease;
-        }
+    footer {background: var(--card); padding: 18px; text-align: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);} 
+    .contacts {display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;}
+    .contact-item {display: flex; align-items: center; gap: 8px;}
+    .contact-item a {color: var(--brand); text-decoration: none;}
+    .download-btn {display: inline-block; margin-top: 10px; background: var(--brand); color: #fff; padding: 10px 16px; border-radius: 10px; text-decoration: none; transition: background 0.2s ease; font-weight:700;}
+    .download-btn:hover {background: var(--brand-dark);} 
 
-        .contact-item a {
-            color: inherit;
-            text-decoration: none;
-        }
+    /* Новые стили для навыков */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    
+    .skill-item {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .skill-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--brand);
+    }
+    
+    .skill-title {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    
+    .skill-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .skill-level {
+      margin-top: auto;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .level-beginner {
+      background-color: rgba(255, 71, 87, 0.15);
+      color: var(--beginner);
+      border: 1px solid var(--beginner);
+      box-shadow: 0 0 8px rgba(255, 71, 87, 0.3);
+    }
+    
+    .level-intermediate {
+      background-color: rgba(255, 165, 2, 0.15);
+      color: var(--intermediate);
+      border: 1px solid var(--intermediate);
+      box-shadow: 0 0 8px rgba(255, 165, 2, 0.3);
+    }
+    
+    .level-advanced {
+      background-color: rgba(46, 213, 115, 0.15);
+      color: var(--advanced);
+      border: 1px solid var(--advanced);
+      box-shadow: 0 0 8px rgba(46, 213, 115, 0.3);
+    }
 
-        .contact-item:hover {
-            background: rgba(74, 144, 226, 0.2);
-        }
+    /* Animations */
+    .animate {opacity: 0; transform: translateY(16px);} 
+    .animate.in {opacity: 1; transform: translateY(0);} 
 
-        /* Заголовки */
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
+    @media(max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+      }
+      
+      .brand {
+        margin-right: 0;
+        margin-bottom: 8px;
+      }
+      
+      nav {gap:4px}
+      .hero img {width: 150px; height: 150px;}
+      section {padding: 46px 16px;}
+      
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 
-        h2 {
-            margin-bottom: 20px;
-            color: #4a90e2;
-        }
-        /* Добавляем стили для десктопной версии */
-        @media (min-width: 769px) {
-            .projects {
-                grid-template-columns: 1fr 1fr;
-                grid-auto-flow: dense;
-            }
-
-            .project[data-language="diplom"] {
-                grid-column: 1 / -1;
-            }
-
-            .project[data-language="go"] {
-                grid-column: 1;
-            }
-
-            .project[data-language="python"] {
-                grid-column: 2;
-            }
-        }
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 10px;
-            }
-
-            .photo {
-                width: 150px;
-                height: 150px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .contact-item {
-                padding: 8px 15px;
-                font-size: 0.9em;
-            }
-        }
-
-        /* Добавленные стили для языков */
-        .project[data-language="go"] {
-            position: relative;
-            border-color: #00ADD8;
-        }
-
-        .project[data-language="go"]::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 30px;
-            height: 30px;
-            background-image: url('https://go.dev/images/go-logo-blue.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-        .project[data-language="python"] {
-            position: relative;
-            border-color: #3776AB;
-        }
-
-        .project[data-language="python"]::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 30px;
-            height: 30px;
-            background-image: url('pythoned.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-        .project[data-language="diplom"] {
-            position: relative;
-            border-color: #ff9100;
-        }
-
-        .project[data-language="diplom"]::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 30px;
-            height: 30px;
-            background-image: url('gutis_new.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-        .diplom {
-            grid-column: span 2;
-        }
-
-        @media (max-width: 768px) {
-            .diplom {
-                grid-column: span 1;
-            }
-        }
-
-        .project[data-language="go"]:hover {
-            background: #00ADD8;
-            color: white;
-        }
-
-        .project[data-language="diplom"]:hover {
-            background: #ff9100;
-            color: white;
-        }
-
-        .project[data-language="python"]:hover {
-            background: linear-gradient(135deg, #3776AB 30%, #FFD43B 100%);
-            color: white;
-        }
-        .project {
-            position: relative; /* Важно для позиционирования псевдоэлемента */
-            overflow: hidden; /* Обрезает выходящие за границы элементы */
-        }
-
-        .project[data-language]::before {
-            transition: opacity 0.3s ease; /* Анимация исчезновения */
-            opacity: 0.8; /* Начальная прозрачность */
-        }
-
-        .project[data-language]:hover::before {
-            opacity: 0; /* Полная прозрачность при наведении */
-        }
-    </style>
+  <link rel="icon" href="logo.png">
 </head>
 <body>
-    <canvas id="canvas"></canvas>
+  <header>
+    <div class="brand"><span class="dot"></span>Новоженин Николай</div>
+    <nav>
+      <a data-target="home" class="active">Главная</a>
+      <a data-target="skills">Навыки</a>
+      <a data-target="projects">Проекты</a>
+      <a data-target="about">Обо мне</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="Переключить тему"><i class="fas fa-moon"></i></button>
+  </header>
 
-    <div class="container">
-        <header class="header">
-            <img src="photo_2025-02-28_18-23-39.jpg" alt="Мое фото" class="photo">
-            <h1>Новоженин Николай Васильевич</h1>
-            <div class="about">
-                <h2>Python/Golang разработчик</h2>
-                <p>Опыт работы: 6 месяцев</p>
-                <p>Стек технологий: Python, Golang, Django, PostgreSQL, Docker</p>
-            </div>
-        </header>
+  <main>
+    <!-- Главная -->
+    <section id="home" class="active">
+      <div class="hero animate">
+        <img src="photo_2025-02-28_18-23-39.jpg" alt="Фото">
+        <h1>Junior Golang Backend Developer</h1>
+        <p class="subtitle">Go, Docker, Kubernetes, PostgreSQL, RabbitMQ, gRPC, Prometheus</p>
+        <a href="Новоженин Николай Васильевич GO.pdf" class="download-btn" download>
+          <i class="fas fa-file-download"></i> Скачать резюме (PDF)
+        </a>
+      </div>
 
-        <section class="projects">
-            <a href="https://github.com/KosyaGUT/diplom.git" 
-            class="project diplom" 
-            target="_blank"
-            data-language="diplom">
-                <h3>ДИПЛОМ</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/shortURL.git" 
-            class="project" 
-            target="_blank"
-            data-language="go">
-                <h3>ShortURL - Сервис для сокращения ссылок</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/weather_server.git" 
-            class="project" 
-            target="_blank"
-            data-language="python">
-                <h3>Weather API Project</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/Prototype-of-a-biathlon-competition-management-system" 
-            class="project" 
-            target="_blank"
-            data-language="go">
-                <h3>Прототип системы для управления биатлонными соревнованиями</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/llm-analyze-know-vulnerabilities-open-source" 
-            class="project" 
-            target="_blank"
-            data-language="python">
-                <h3>Анализ уязвимостей в open-source проектах с использованием LLM</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/CalculatorGo" 
-            class="project" 
-            target="_blank"
-            data-language="go">
-                <h3>Calculator in Go</h3>
-            </a>
-            <a href="https://github.com/KosyaGUT/bot-cloudwords" 
-            class="project" 
-            target="_blank"
-            data-language="python">
-                <h3>Telegram WordCloud Bot для абитуриентов</h3>
-            </a>
-        </section>
-    </div>
+      <div class="card animate" style="margin-top:24px">
+        <h2 style="margin-bottom:8px">Коротко</h2>
+        <p>Делаю быстрые и надёжные сервисы на Go. Умею профилировать узкие места, настраивать очереди и поднимать сервисы в Kubernetes. Люблю аккуратный код и понятные интерфейсы API.</p>
+      </div>
+    </section>
 
-    <footer>
-        <div class="contacts">
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+79058436186">+7 (905) 843-61-86</a>
+    <!-- Навыки -->
+    <section id="skills">
+      <h2 class="animate" style="margin-bottom:14px">Навыки</h2>
+      
+      <div class="skills-container">
+        <!-- Go -->
+        <div class="skill-item animate">
+          <div class="skill-header">
+            <div class="skill-icon">
+                <img src="go_logo.png" style="width: 50px; filter: invert(49%) sepia(71%) saturate(4420%) hue-rotate(190deg) brightness(95%) contrast(90%);" alt="">
             </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:nikolaynovozhenin@ya.ru">nikolaynovozhenin@ya.ru</a>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-telegram-plane"></i>
-                <a href="https://t.me/GUTIS_NV" target="_blank">@GUTIS_NV</a>
-            </div>
+            <div class="skill-title">Go</div>
+          </div>
+          <div class="skill-description">
+            Разработка высокопроизводительных серверных приложений, REST API, работа с горутинами и каналами.
+          </div>
+          <div class="skill-level level-intermediate">Средний уровень</div>
         </div>
-    </footer>
+        
+        <!-- Docker -->
+        <div class="skill-item animate">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fab fa-docker"></i>
+            </div>
+            <div class="skill-title">Docker</div>
+          </div>
+          <div class="skill-description">
+            Создание и оптимизация Docker-образов, управление контейнерами, Docker Compose для локальной разработки.
+          </div>
+          <div class="skill-level level-intermediate">Средний уровень</div>
+        </div>
+        
+        <!-- Kubernetes -->
+        <div class="skill-item animate">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <div class="skill-title">Kubernetes</div>
+          </div>
+          <div class="skill-description">
+            Базовое развертывание приложений, настройка Pods, Deployments, Services. Освоение основных концепций оркестрации.
+          </div>
+          <div class="skill-level level-beginner">Базовый уровень</div>
+        </div>
+        
+        <!-- PostgreSQL -->
+        <div class="skill-item animate">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <div class="skill-title">PostgreSQL</div>
+          </div>
+          <div class="skill-description">
+            Проектирование схем БД, написание сложных запросов, оптимизация производительности, использование транзакций.
+          </div>
+          <div class="skill-level level-intermediate">Средний уровень</div>
+        </div>
+        
+        <!-- RabbitMQ -->
+        <div class="skill-item animate">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <div class="skill-title">RabbitMQ</div>
+          </div>
+          <div class="skill-description">
+            Настройка очередей сообщений, работа с exchange и routing keys, обеспечение надежной доставки сообщений.
+          </div>
+          <div class="skill-level level-beginner">Базовый уровень</div>
+        </div>
+        
+        <!-- gRPC -->
+        <div class="skill-item animate">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <div class="skill-title">gRPC</div>
+          </div>
+          <div class="skill-description">
+            Создание эффективных межсервисных коммуникаций с использованием Protocol Buffers и потоковой передачи данных.
+          </div>
+          <div class="skill-level level-beginner">Базовый уровень</div>
+        </div>
+        
+        <!-- Git -->
+        <div class="skill-item animate">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fab fa-git-alt"></i>
+            </div>
+            <div class="skill-title">Git</div>
+          </div>
+          <div class="skill-description">
+            Ветвление, слияние, разрешение конфликтов, работа с удаленными репозиториями, знание основных workflow.
+          </div>
+          <div class="skill-level level-intermediate">Средний уровень</div>
+        </div>
+        
+        <!-- Linux -->
+        <div class="skill-item animate">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fab fa-linux"></i>
+            </div>
+            <div class="skill-title">Linux</div>
+          </div>
+          <div class="skill-description">
+            Администрирование серверов, написание shell-скриптов, настройка системных служб, мониторинг ресурсов.
+          </div>
+          <div class="skill-level level-intermediate">Средний уровень</div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        // Оптимизированная анимация частиц
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const maxParticles = 100;
+    <!-- Проекты -->
+    <section id="projects">
+      <h2 class="animate" style="margin-bottom:14px">Проекты</h2>
+      <div class="projects" id="projectsGrid">
+        <!-- Статический fallback -->
+        <article class="project animate">
+          <a href="https://github.com/KosyaGUT/shortURL" target="_blank">
+            <h3>ShortURL</h3>
+            <p>Сервис для сокращения ссылок (Go, PostgreSQL, Docker). REST API, поддержка in-memory и PostgreSQL-хранилища.</p>
+            <div class="meta"><i class="fab fa-github"></i> github.com/KosyaGUT/shortURL</div>
+          </a>
+        </article>
+        <article class="project animate">
+          <a href="https://github.com/KosyaGUT/Prototype-of-a-biathlon-competition-management-system" target="_blank">
+            <h3>BiathlonCore</h3>
+            <p>Прототип системы управления биатлонными соревнованиями с обработкой событий в реальном времени.</p>
+            <div class="meta"><i class="fab fa-github"></i> github.com/KosyaGUT/Prototype-of-a-biathlon-competition-management-system</div>
+          </a>
+        </article>
+        <article class="project animate">
+          <a href="https://github.com/KosyaGUT/weather_server" target="_blank">
+            <h3>Weather API</h3>
+            <p>REST API сервис погоды (Python, FastAPI, Docker).</p>
+            <div class="meta"><i class="fab fa-github"></i> github.com/KosyaGUT/weather_server</div>
+          </a>
+        </article>
+      </div>
+    </section>
 
-        // Настройка canvas
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+    <!-- Обо мне -->
+    <section id="about">
+      <div class="card animate about">
+        <h2>Обо мне</h2>
+        <p>Я — Новоженин Николай, junior Go backend-разработчик. Опыт: миграция данных, разработка и поддержка сервисов, профилирование производительности, настройка мониторинга и очередей сообщений.</p>
+        <p>Быстро вхожу в задачи, довожу фичи до состояния продакшн, люблю чистый код и понятные API. Готов к парной разработке, код-ревью и тестовым.</p>
+        <p>Интересы: высоконагруженные сервисы, очереди, оптимизация запросов, наблюдаемость (metrics/traces), безопасность API.</p>
+      </div>
+    </section>
+  </main>
 
-        // Класс частицы
-        class Particle {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = Math.random() * 3 - 1.5;
-                this.speedY = Math.random() * 3 - 1.5;
-                this.color = `hsla(210, 70%, 50%, ${Math.random() * 0.4})`;
-            }
+  <footer>
+    <div class="contacts" style="margin-bottom:16px;">
+      <div class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+79058436186">+7 (905) 843-61-86</a></div>
+      <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:nikolaynovozhenin@ya.ru">nikolaynovozhenin@ya.ru</a></div>
+      <div class="contact-item"><i class="fab fa-telegram-plane"></i> <a href="https://t.me/GUTIS_VN" target="_blank">@GUTIS_VN</a></div>
+      <div class="contact-item"><i class="fab fa-github"></i> <a href="https://github.com/KosyaGUT" target="_blank">GitHub</a></div>
+      <div class="contact-item"><i class="fas fa-globe"></i> <a href="https://kosyagut.github.io/" target="_blank">Портфолио</a></div>
+    </div>
+    &copy; 2025 Новоженин Николай. Все права защищены.
+  </footer>
 
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.size *= 0.97;
-            }
+  <script>
+    // === Навигация как SPA ===
+    const navLinks = document.querySelectorAll('nav a');
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === id));
+      const target = document.getElementById(id);
+      target.classList.add('active');
+      // триггер анимаций появления
+      target.querySelectorAll('.animate').forEach(el => {
+        el.classList.remove('in');
+        // принудительный reflow для перезапуска анимации
+        void el.offsetWidth; 
+        requestAnimationFrame(() => el.classList.add('in'));
+      });
+      history.replaceState(null, '', `#${id}`);
+      window.scrollTo(0, 0);
+    }
+    navLinks.forEach(a => a.addEventListener('click', () => showSection(a.dataset.target)));
+    // deep-link по hash
+    const initial = location.hash?.replace('#','') || 'home';
+    showSection(initial);
 
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+    // === Анимации на первом экране ===
+    document.querySelectorAll('#home .animate').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 120 + i*120);
+    });
 
-        // Обработчик движения мыши
-        document.addEventListener('mousemove', (e) => {
-            if (particles.length < maxParticles) {
-                for (let i = 0; i < 2; i++) {
-                    particles.push(new Particle(e.clientX, e.clientY));
-                }
-            }
+    // === Тёмная тема ===
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(t){
+      root.setAttribute('data-theme', t); 
+      localStorage.setItem('theme', t);
+      themeToggle.innerHTML = t === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    } 
+    const saved = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(saved);
+    themeToggle.addEventListener('click', ()=> setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'));
+
+    // === Подгрузка проектов из GitHub API ===
+    const grid = document.getElementById('projectsGrid');
+    async function loadRepos(){
+      try{
+        const resp = await fetch('https://api.github.com/users/KosyaGUT/repos?sort=updated&per_page=6');
+        if(!resp.ok) return; 
+        const repos = await resp.json();
+        // приоритет Go и свежие
+        const sorted = repos
+          .filter(r => !r.fork)
+          .sort((a,b)=>{
+            const langScore = (x)=> (x.language==='Go'?2:(x.language==='Python'?1:0));
+            const byLang = langScore(b) - langScore(a);
+            if(byLang!==0) return byLang;
+            return new Date(b.updated_at)-new Date(a.updated_at);
+          })
+          .slice(0,3);
+        
+        // вставить API-проекты после статических
+        sorted.forEach(repo=>{
+          const a = document.createElement('article');
+          a.className='project animate fromAPI';
+          a.innerHTML = `
+            <a href="${repo.html_url}" target="_blank">
+              <h3>${repo.name}</h3>
+              <p>${(repo.description||'Без описания').replace(/</g,'&lt;')}</p>
+              <div class="meta"><i class="fab fa-github"></i> ⭐ ${repo.stargazers_count} · ⏱ обновлено ${new Date(repo.updated_at).toLocaleDateString('ru-RU')}</div>
+            </a>`;
+          grid.appendChild(a);
+          requestAnimationFrame(()=> a.classList.add('in'));
         });
+      }catch(e){/* тихий fallback */}
+    }
+    loadRepos();
 
-        // Анимация
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles = particles.filter(particle => {
-                particle.update();
-                particle.draw();
-                return particle.size > 0.3;
-            });
-
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        // Оптимизированные ховер-эффекты
-        document.querySelectorAll('.project').forEach(project => {
-            project.addEventListener('mouseover', function() {
-                this.style.transform = 'translateY(-5px)';
-            });
-
-            project.addEventListener('mouseout', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-    </script>
+    // Активировать анимации в видимой секции при загрузке
+    document.querySelectorAll('section.active .animate').forEach(el=>{
+      requestAnimationFrame(()=> el.classList.add('in'));
+    });
+  </script>
 </body>
 </html>
